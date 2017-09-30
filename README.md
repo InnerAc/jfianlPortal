@@ -1,0 +1,2 @@
+# jfianlPortal
+一个基于jfinal无权限控制的自由调整的门户系统
