@@ -33,4 +33,9 @@ public class Constants {
 	 * tab聚合类
 	 */
 	public static int TYPE_TABS = 6;
+	
+	/**
+	 * 展示框最多展示条目
+	 */
+	public static int SHOW_NUMBER = 6;
 }
