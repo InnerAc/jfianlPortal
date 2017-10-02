@@ -11,13 +11,4 @@ public class PanelController extends BaseController{
 		renderJson(res);
 	}
 	
-	public void add(){
-		JPPanel panel = getModel(JPPanel.class,"");
-		boolean isok = panelService.addPanel(panel);
-		if(isok){
-			success();
-		}else{
-			error(0, "增加展示面板失败！");
-		}
-	}
 }

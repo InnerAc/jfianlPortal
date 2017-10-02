@@ -19,7 +19,7 @@ public class PanelService extends BaseService{
 		Map<String, Object> panel = new HashMap<String,Object>();
 		panel.put("panel", jPanel);
 		if (ptype == Constants.TYPE_LIST_ARTICLE || ptype == Constants.TYPE_IMAGES || ptype == Constants.TYPE_LIST_LINK || ptype == Constants.TYPE_TITLE_ROLL) {
-			List<JPArticle> articles = articleDao.selectByPid(pid);
+			List<JPArticle> articles = articleDao.selectByPidLimit(pid);
 			panel.put("articles", articles);
 		}else if(ptype == Constants.TYPE_TABS){
 			String[] idStrs = jPanel.getStr("pvalue").split(",");
@@ -38,5 +38,11 @@ public class PanelService extends BaseService{
 	
 	public boolean addPanel(JPPanel panel){
 		return panel.save();
+	}
+	
+	public boolean updateValue(int pid,String value){
+		JPPanel panel = panelDao.findById(pid);
+		panel.set("pvalue", value);
+		return panel.update();
 	}
 }

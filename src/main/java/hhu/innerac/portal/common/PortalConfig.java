@@ -11,6 +11,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 
+import hhu.innerac.portal.controller.AdminPanelController;
 import hhu.innerac.portal.controller.BaseController;
 import hhu.innerac.portal.controller.PanelController;
 import hhu.innerac.portal.entry.JPArticle;
@@ -56,6 +57,7 @@ public class PortalConfig extends JFinalConfig{
 	public void configRoute(Routes arg0) {
 		arg0.add("/", BaseController.class);
 		arg0.add("panel",PanelController.class);
+		arg0.add("admin/panel",AdminPanelController.class,"views/admin/panel");
 	}
 
 }
