@@ -14,9 +14,6 @@ public class BaseController extends Controller{
 	public final static PanelService panelService = new PanelService();
 	public final static ArticleService articleService = new ArticleService();
 	public final static FileService fileService = new FileService();
-	public void index(){
-		renderText("success");
-	}
 	
 	public void success(){
 		Map<String, Object> res = new HashMap<String,Object>();
@@ -29,5 +26,9 @@ public class BaseController extends Controller{
 		res.put("statu", statu);
 		res.put("msg", msg);
 		renderJson(res);
+	}
+	
+	public void html404(){
+		render("views/common/404.jsp");
 	}
 }

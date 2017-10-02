@@ -20,6 +20,11 @@
 	    <artifactId>jfinal</artifactId>
 	    <version>3.2</version>
 	</dependency>
+	<dependency>
+        <groupId>com.jfinal</groupId>
+        <artifactId>cos</artifactId>
+        <version>2017.5</version>
+    </dependency>
 	<!-- mysql -->
 	<dependency>
         <groupId>com.alibaba</groupId>

@@ -11,8 +11,10 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 
+import hhu.innerac.portal.controller.AdminArticleController;
 import hhu.innerac.portal.controller.AdminPanelController;
 import hhu.innerac.portal.controller.BaseController;
+import hhu.innerac.portal.controller.IndexController;
 import hhu.innerac.portal.controller.PanelController;
 import hhu.innerac.portal.entry.JPArticle;
 import hhu.innerac.portal.entry.JPFile;
@@ -24,6 +26,8 @@ public class PortalConfig extends JFinalConfig{
 	public void configConstant(Constants arg0) {
 		arg0.setDevMode(true);
 		arg0.setViewType(ViewType.JSP);
+		arg0.setBaseUploadPath("static");
+		arg0.setBaseDownloadPath("static/file");
 	}
 
 	@Override
@@ -55,9 +59,10 @@ public class PortalConfig extends JFinalConfig{
 
 	@Override
 	public void configRoute(Routes arg0) {
-		arg0.add("/", BaseController.class);
+		arg0.add("/", IndexController.class);
 		arg0.add("panel",PanelController.class);
 		arg0.add("admin/panel",AdminPanelController.class,"views/admin/panel");
+		arg0.add("admin/article",AdminArticleController.class,"views/admin/article");
 	}
 
 }

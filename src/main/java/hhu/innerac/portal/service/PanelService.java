@@ -45,4 +45,10 @@ public class PanelService extends BaseService{
 		panel.set("pvalue", value);
 		return panel.update();
 	}
+	
+	public List<JPPanel> getPanels(){
+		String sql = "select * from jp_panel";
+		List<JPPanel> panels = panelDao.find(sql);
+		return panels;
+	}
 }

@@ -2,7 +2,6 @@ package hhu.innerac.portal.controller;
 
 import java.util.List;
 
-import com.jfinal.core.Controller;
 
 import hhu.innerac.portal.entry.JPArticle;
 import hhu.innerac.portal.entry.JPPanel;
@@ -19,6 +18,12 @@ public class AdminPanelController extends BaseController{
 		render("index.jsp");
 	}
 
+	public void all(){
+		List<JPPanel> panels = panelService.getPanels();
+		setAttr("panels", panels);
+		render("all.jsp");
+	}
+	
 	public void add(){
 		if (getRequest().getMethod().equals("GET")) {
 			render("add.jsp");
@@ -47,9 +52,23 @@ public class AdminPanelController extends BaseController{
 	
 	public void edit(){
 		int pid = getParaToInt("pid");
+		JPPanel panel = BaseService.panelDao.findById(pid);
+		if(panel == null){
+			html404();
+			return;
+		}else{
+			setAttr("panel", panel);
+			render("edit.jsp");
+		}
 	}
 	
 	public void update(){
 		JPPanel panel = getModel(JPPanel.class,"");
+		panel.update();
+		success();
+	}
+	
+	public void delete(){
+		int pid = getParaToInt("pid");
 	}
 }
