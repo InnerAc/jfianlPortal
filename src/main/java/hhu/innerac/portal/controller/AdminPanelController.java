@@ -24,6 +24,11 @@ public class AdminPanelController extends BaseController{
 		render("all.jsp");
 	}
 	
+	public void panels(){
+		List<JPPanel> panels = panelService.getPanels();
+		renderJson(panels);
+	}
+	
 	public void add(){
 		if (getRequest().getMethod().equals("GET")) {
 			render("add.jsp");
@@ -32,7 +37,7 @@ public class AdminPanelController extends BaseController{
 			JPPanel panel = getModel(JPPanel.class,"");
 			boolean isok = panelService.addPanel(panel);
 			if(isok){
-				success();
+				redirect("/admin/panel/"+panel.getPid());
 			}else{
 				error(0, "增加展示面板失败！");
 			}
@@ -65,7 +70,7 @@ public class AdminPanelController extends BaseController{
 	public void update(){
 		JPPanel panel = getModel(JPPanel.class,"");
 		panel.update();
-		success();
+		redirect("/admin/panel/"+panel.getPid());
 	}
 	
 	public void delete(){

@@ -4940,3 +4940,11 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+/*-- Jfinal Portal Style--*/
+.btn-mini{
+	padding-top:0 !important;
+	padding-bottom:0; 
+}
+.btn-td{
+	padding:0 ;
+}

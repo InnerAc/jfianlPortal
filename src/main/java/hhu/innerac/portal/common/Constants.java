@@ -35,6 +35,11 @@ public class Constants {
 	public static int TYPE_TABS = 6;
 	
 	/**
+	 * 自由定制类
+	 */
+	public static int TYPE_SELF = 7;
+	
+	/**
 	 * 展示框最多展示条目
 	 */
 	public static int SHOW_NUMBER = 6;

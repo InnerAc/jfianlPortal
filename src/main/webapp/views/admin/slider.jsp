@@ -69,3 +69,4 @@
   <script src="static/js/jquery-2.2.3.min.js"></script>
   <script src="static/js/bootstrap.min.js"></script>
   <script src="static/js/app.js"></script>
+  <script src="static/myjs/constants.js"></script>
