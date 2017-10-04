@@ -68,6 +68,11 @@ public class AdminArticleController extends BaseController{
 		}
 	}
 	
+	public void upfile(){
+		UploadFile image = getFile("artimage");
+		renderText("static/artimage/"+image.getFileName());
+	}
+	
 	public void removeFile(){
 		int fid = getParaToInt("fid");
 		boolean isok = fileService.remove(fid);

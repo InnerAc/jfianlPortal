@@ -10,4 +10,9 @@ public class IndexController extends BaseController{
 		String pname = fileService.getFname(fid);
 		renderFile(pname);
 	}
+	
+	public void panels(){
+		
+	}
+	
 }

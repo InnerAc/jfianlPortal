@@ -6,12 +6,14 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 
 import hhu.innerac.portal.controller.AdminArticleController;
+import hhu.innerac.portal.controller.AdminController;
 import hhu.innerac.portal.controller.AdminPanelController;
 import hhu.innerac.portal.controller.BaseController;
 import hhu.innerac.portal.controller.IndexController;
@@ -37,7 +39,7 @@ public class PortalConfig extends JFinalConfig{
 
 	@Override
 	public void configHandler(Handlers arg0) {
-		
+		arg0.add(new ContextPathHandler("baseUrl"));
 	}
 
 	@Override
@@ -61,6 +63,7 @@ public class PortalConfig extends JFinalConfig{
 	public void configRoute(Routes arg0) {
 		arg0.add("/", IndexController.class);
 		arg0.add("panel",PanelController.class);
+		arg0.add("admin",AdminController.class,"views/admin");
 		arg0.add("admin/panel",AdminPanelController.class,"views/admin/panel");
 		arg0.add("admin/article",AdminArticleController.class,"views/admin/article");
 	}
