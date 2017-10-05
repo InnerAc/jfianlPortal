@@ -1,6 +1,9 @@
 package hhu.innerac.portal.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.jfinal.upload.UploadFile;
 
@@ -69,8 +72,15 @@ public class AdminArticleController extends BaseController{
 	}
 	
 	public void upfile(){
-		UploadFile image = getFile("artimage");
-		renderText("static/artimage/"+image.getFileName());
+		List<UploadFile> files = getFiles("artimage");
+		List<String> data = new ArrayList<String>();
+		for(UploadFile file : files){
+			data.add("static/artimage/"+file.getFileName());
+		}
+		Map<String, Object> res = new HashMap<String,Object>();
+		res.put("errno", 0);
+		res.put("data", data);
+		renderJson(res);
 	}
 	
 	public void removeFile(){

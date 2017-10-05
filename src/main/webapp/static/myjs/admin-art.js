@@ -15,6 +15,27 @@ function updateValue(){
 		}
 	});
 }
+function updateTextArea(){
+	if($('#ptype').html() == '1'){
+		value = editor.txt.html()
+	}else{
+		value = $('#textarea0').val();
+	}
+	pid = $('#pid').html();
+	$.ajax({
+		type: "POST",
+		url: 'admin/panel/updateValue',
+		dataType: "json",
+		data: {pid:pid,pvalue:value},
+		success:function(data){
+			if(data.statu == 200){
+				alert('更新成功');
+			}else{
+				alert(data.msg);
+			}
+		}
+	});
+}
 function selectTabs(){
 	allPanels = $('#allPanels');
 	allPanels.html('');

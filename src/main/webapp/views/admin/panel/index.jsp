@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../slider.jsp"></jsp:include>
+<link rel="stylesheet" href="static/css/wangEditor.css">
 <style>
 table{
 	table-layout: fixed;
@@ -58,12 +59,14 @@ td{
 			<div class="form-group">
 				<label class="col-sm-3">展示内容：</label>
 				<div class="col-sm-9">
-					<button class="btn btn-success btn-mini">更新</button>
+					<a onclick="updateTextArea();" class="btn btn-success btn-mini">更新</a>
 				</div>
 			</div>
+			</c:if>
+			<c:if test="${panel.ptype == 7}">
 			<div class="form-group">
-				<div class="col-sm-12">
-					<textarea class="form-control" rows="3" value="${panel.pvalue }" placeholder="Enter ..."></textarea>
+			 	<div class="col-sm-12">
+					<textarea class="form-control" rows="5" id="textarea0">${panel.pvalue }</textarea>
 				</div>
 			</div>
 			</c:if>
@@ -96,6 +99,11 @@ td{
 			</c:if>
  		</form>	
  	</div>
+ 	<c:if test="${panel.ptype == 1}">
+ 	<div class="col-sm-12">
+		<div id="textarea1">${panel.pvalue }</div>
+	</div>
+	</c:if>
  	<div class="col-md-6">
  		<div class="col-col-12 col-box">
 			<div class="box box-danger">
@@ -147,12 +155,39 @@ td{
 </div>
 <div style="display:none">
 <div id="pid">${panel.pid }</div>
+<div id="ptype">${panel.ptype}</div>
 </div>
 <script src="static/myjs/admin-art.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
+<script src="static/js/wangEditor.js"></script>
 <script>
 	$('#ptype').html(PANEL_TYPES['${panel.ptype}']);
 	genTimes();
+	//wangEditor
+	var Editor = window.wangEditor
+	var editor = new Editor('#textarea1');
+	editor.customConfig.menus =[
+	    'head',  // 标题
+	    'bold',  // 粗体
+	    'italic',  // 斜体
+	    'underline',  // 下划线
+	    'strikeThrough',  // 删除线
+	    'foreColor',  // 文字颜色
+	    'backColor',  // 背景颜色
+	    'link',  // 插入链接
+	    'list',  // 列表
+	    'justify',  // 对齐方式
+	    'quote',  // 引用
+	    'image',  // 插入图片
+	    'table',  // 表格
+	    'video',  // 插入视频
+	    'code',  // 插入代码
+	    'undo',  // 撤销
+	    'redo'  // 重复
+	]
+	editor.customConfig.uploadImgServer = 'admin/article/upfile';
+	editor.customConfig.uploadFileName = 'artimage'
+	editor.create();
 </script>
 </div>
 <jsp:include page="../footer.jsp"></jsp:include>
