@@ -31,7 +31,7 @@
 					</c:if>
 				</div>
 				<div class="box-body">
-					<a class="btn btn-sm btn-info">查看</a>
+					<a href="admin/panel/${panel.pid }" class="btn btn-sm btn-info">查看</a>
 					<a class="btn btn-sm btn-warning">编辑</a>
 					<a class="btn btn-sm btn-danger">删除</a>
 				</div>

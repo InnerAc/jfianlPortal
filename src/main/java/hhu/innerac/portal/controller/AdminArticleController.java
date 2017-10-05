@@ -56,6 +56,13 @@ public class AdminArticleController extends BaseController{
 		render("edit.jsp");
 	}
 	
+	public void delete(){
+		int aid = getParaToInt("aid");
+		JPArticle article = BaseService.articleDao.findById(aid);
+		article.delete();
+		success();
+	}
+	
 	public void update(){
 		if (getRequest().getMethod().equals("POST")) {
 			List<UploadFile> files = getFiles("file");

@@ -50,7 +50,7 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="">
+          <a href="admin">
             <i class="fa fa-laptop"></i>
             <span>面板管理</span>
           </a>

@@ -36,6 +36,22 @@ function updateTextArea(){
 		}
 	});
 }
+function deleteArt(aid,e){
+	$.ajax({
+		type: "POST",
+		url: 'admin/article/delete',
+		dataType: "json",
+		data: {aid:aid},
+		success:function(data){
+			if(data.statu == 200){
+				$(e).parent().parent().remove();
+				alert('删除成功');
+			}else{
+				alert(data.msg);
+			}
+		}
+	});
+}
 function selectTabs(){
 	allPanels = $('#allPanels');
 	allPanels.html('');
