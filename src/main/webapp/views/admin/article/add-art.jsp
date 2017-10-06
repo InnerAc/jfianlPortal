@@ -66,8 +66,6 @@ td{
 <script src="static/js/jquery-ui.min.js"></script>
 <script src="static/js/wangEditor.js"></script>
 <script>
-	$('#ptype').html(PANEL_TYPES['${panel.ptype}']);
-	genTimes();
 	//wangEditor
 	var Editor = window.wangEditor
 	var editor = new Editor('#textarea1');

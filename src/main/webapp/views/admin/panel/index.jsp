@@ -172,7 +172,7 @@ td{
 				<div class="box-body">
 					<table class="table table-condensed table-hover">
 						<c:forEach items="${articles}" var="article"><tr>
-							<td width="80%"><a href="admin/article/${article.aid }"><img style="height:100px;" class="img-responsive" src="${article.atitle }" /></a></td>
+							<td width="80%"><a href="admin/article/${article.aid }"><img style="height:100px;" class="img-responsive" src="${article.avalue }" alt="${article.atitle }" /></a></td>
 							<td>
 								<a href="admin/article/edit?aid=${article.aid }" class="btn btn-td btn-warning">编辑</a>
 								<a onclick="deleteArt(${article.aid },this);" class="btn btn-td btn-danger">删除</a>

@@ -3,3 +3,6 @@ function addArt(){
 	$('#avalue').val(avalue);
 	$('#iform').submit();
 }
+function addImg(){
+	$('#iform').submit();
+}

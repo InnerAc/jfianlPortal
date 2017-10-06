@@ -1,10 +1,13 @@
 package hhu.innerac.portal.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jfinal.kit.PathKit;
+import com.jfinal.kit.PropKit;
 import com.jfinal.upload.UploadFile;
 
 import hhu.innerac.portal.common.Constants;
@@ -12,6 +15,7 @@ import hhu.innerac.portal.entry.JPArticle;
 import hhu.innerac.portal.entry.JPFile;
 import hhu.innerac.portal.entry.JPPanel;
 import hhu.innerac.portal.service.BaseService;
+import hhu.innerac.portal.util.DateUtil;
 
 public class AdminArticleController extends BaseController{
 	public void index(){
@@ -53,6 +57,25 @@ public class AdminArticleController extends BaseController{
 			for(UploadFile file : files){
 				fileService.add(aid, file.getFileName(), "/static/file/"+file.getFileName());
 			}
+			redirect("/admin/article/"+article.getAid());
+		}
+	}
+	
+	public void addImg(){
+		if (getRequest().getMethod().equals("POST")) {
+			List<UploadFile> files = getFiles("artimage");
+			UploadFile file = files.get(0);
+			String uploadFile = file.getUploadPath();
+			String suffix = "."+file.getContentType().split("/")[1];
+			File oldFile = new File(uploadFile+"/" +file.getFileName());
+			File newFile = new File(uploadFile+"/"+DateUtil.randomName(6)+suffix);
+			
+			JPArticle article = getModel(JPArticle.class,"");
+			article.setAvalue("static/artimage/"+newFile.getName());
+			articleService.add(article);
+			int aid = article.getAid();
+			
+			
 			redirect("/admin/article/"+article.getAid());
 		}
 	}
