@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.jfinal.upload.UploadFile;
 
+import hhu.innerac.portal.common.Constants;
 import hhu.innerac.portal.entry.JPArticle;
 import hhu.innerac.portal.entry.JPFile;
 import hhu.innerac.portal.entry.JPPanel;
@@ -28,10 +29,19 @@ public class AdminArticleController extends BaseController{
 			JPPanel panel = BaseService.panelDao.findById(pid);
 			int ptype = panel.getPtype();
 			String pname = panel.getPname();
+			setAttr("panel", panel);
 			setAttr("ptype", ptype);
 			setAttr("pname", pname);
 			setAttr("pid", pid);
-			render("add.jsp");
+			if(ptype == Constants.TYPE_LIST_ARTICLE || ptype == Constants.TYPE_TITLE_ROLL){
+				render("add-art.jsp");
+			}
+			if(ptype == Constants.TYPE_IMAGES){
+				render("add-image.jsp");
+			}
+			if(ptype == Constants.TYPE_LIST_LINK){
+				render("add-link.jsp");
+			}
 		}
 		if (getRequest().getMethod().equals("POST")) {
 			List<UploadFile> files = getFiles("file");
@@ -43,7 +53,7 @@ public class AdminArticleController extends BaseController{
 			for(UploadFile file : files){
 				fileService.add(aid, file.getFileName(), "/static/file/"+file.getFileName());
 			}
-			render("add.jsp");
+			redirect("/admin/article/"+article.getAid());
 		}
 	}
 	

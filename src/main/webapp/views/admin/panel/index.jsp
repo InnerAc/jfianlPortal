@@ -105,7 +105,7 @@ td{
 	</div>
 	</c:if>
  	<div class="col-md-6">
- 		<c:if test="${panel.ptype == 0 ||panel.ptype == 3 }">
+ 		<c:if test="${panel.ptype == 0 ||panel.ptype == 3}">
  		<div class="col-col-12 col-box">
 			<div class="box box-danger">
 				<div class="box-header">
@@ -132,6 +132,32 @@ td{
 		</div>
  		</c:if>
  		
+ 		<c:if test="${panel.ptype == 4}">
+ 		<div class="col-col-12 col-box">
+			<div class="box box-danger">
+				<div class="box-header">
+					<h3 class="box-title">链接列表</h3>
+					<div class="box-tools pull-right">
+						<div class="btn-group">
+							<a href="admin/article/add/${panel.pid }" class="btn btn-info btn-sm">添加链接</a>
+						</div>
+					</div>
+				</div>
+				<div class="box-body">
+					<table class="table table-condensed table-hover">
+						<c:forEach items="${articles}" var="article"><tr>
+							<td width="70%"><a href="admin/article/${article.aid }">${article.atitle }</a></td>
+							<td>
+								<a href="admin/article/edit?aid=${article.aid }" class="btn btn-td btn-warning">编辑</a>
+								<a onclick="deleteArt(${article.aid },this);" class="btn btn-td btn-danger">删除</a>
+							</td>
+						</tr></c:forEach>
+					</table>
+				</div>
+			</div>
+		</div>
+ 		</c:if>
+ 		
  		<c:if test="${panel.ptype == 2 }">
  		<div class="col-col-12 col-box">
 			<div class="box box-danger">
@@ -146,7 +172,7 @@ td{
 				<div class="box-body">
 					<table class="table table-condensed table-hover">
 						<c:forEach items="${articles}" var="article"><tr>
-							<td width="80%"><a href="admin/article/${article.aid }"><img src="${article.avalue }" alt="${article.atitle }"/></a></td>
+							<td width="80%"><a href="admin/article/${article.aid }"><img style="height:100px;" class="img-responsive" src="${article.atitle }" /></a></td>
 							<td>
 								<a href="admin/article/edit?aid=${article.aid }" class="btn btn-td btn-warning">编辑</a>
 								<a onclick="deleteArt(${article.aid },this);" class="btn btn-td btn-danger">删除</a>
@@ -186,7 +212,7 @@ td{
 <div id="pid">${panel.pid }</div>
 <div id="ptype">${panel.ptype}</div>
 </div>
-<script src="static/myjs/admin-art.js"></script>
+<script src="static/myjs/admin-panel.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>
 <script src="static/js/wangEditor.js"></script>
 <script>
