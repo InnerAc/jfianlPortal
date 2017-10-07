@@ -119,7 +119,9 @@ public class AdminArticleController extends BaseController{
 	public void edit(){
 		int aid = getParaToInt("aid");
 		JPArticle article = BaseService.articleDao.findById(aid);
+		JPPanel panel = BaseService.panelDao.findById(article.getPid());
 		List<JPFile> files = fileService.getByAid(aid);
+		setAttr("panel", panel);
 		setAttr("article", article);
 		setAttr("files", files);
 		render("edit.jsp");

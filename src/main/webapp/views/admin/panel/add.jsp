@@ -67,6 +67,7 @@
 			<div class="form-group">
 				<div class="col-sm-10">
 					<button type="submit" class="btn btn-primary">添加</button>
+					<a onclick="history.go(-1);" class="btn btn-warning">返回</a>
 				</div>
 			</div>
  		</form>	

@@ -68,7 +68,7 @@
 			<div class="form-group">
 				<div class="col-sm-10">
 					<button type="submit" class="btn btn-primary">更新</button>
-					<button type="submit" class="btn btn-warning">返回</button>
+					<a onclick="history.go(-1);" class="btn btn-warning">返回</a>
 				</div>
 			</div>
  		</form>	
@@ -77,7 +77,7 @@
 </section>
 <script>
 document.getElementById("ptype")["${panel.ptype }"].selected=true;
-document.getElementById("psize")["${panel.psize }"].selected=true;
+document.getElementById("psize")["${panel.psize -1}"].selected=true;
 </script>
 </div>
 <jsp:include page="../footer.jsp"></jsp:include>

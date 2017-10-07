@@ -26,13 +26,13 @@
 					<h3 class="box-title">${panel.pname }</h3>
 					<c:if test="${panel.ptype == 0 || panel.ptype == 2 || panel.ptype == 3 || panel.ptype == 4 }">
 					<div class="box-tools pull-right">
-						<a class="btn btn-box-tool"><i class="fa fa-plus"></i></a>
+						<a href="admin/article/add/${panel.pid }" class="btn btn-box-tool"><i class="fa fa-plus"></i></a>
 					</div>
 					</c:if>
 				</div>
 				<div class="box-body">
 					<a href="admin/panel/${panel.pid }" class="btn btn-sm btn-info">查看</a>
-					<a class="btn btn-sm btn-warning">编辑</a>
+					<a href="admin/panel/edit?pid=${panel.pid }" class="btn btn-sm btn-warning">编辑</a>
 					<a class="btn btn-sm btn-danger">删除</a>
 				</div>
 			</div>

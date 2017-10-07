@@ -34,10 +34,12 @@ td{
  		<div class="col-md-12">
 	 		<c:if test="${files != null}">
 	 			<h3><small>附件列表</small></h3>
+	 		<ul>
 	 		  <c:forEach items="${files }" var="file">
-			    <a href="file/${file.fid }">${file.fname }</a><br>
+			    <li><a href="file/${file.fid }">${file.fname }</a></li>
 			  </c:forEach>
 			 </c:if>
+			 </ul>
 	 	</div>
  	</div>
 </section>
