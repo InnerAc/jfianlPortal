@@ -10,6 +10,9 @@ import hhu.innerac.portal.util.DateUtil;
 public class JPArticle extends Model<JPArticle>{
 	private static final long serialVersionUID = 1L;
 	
+	public int getPid(){
+		return getInt("pid");
+	}
 	public int getAid(){
 		return getInt("aid");
 	}

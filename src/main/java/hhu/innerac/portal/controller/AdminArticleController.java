@@ -22,9 +22,23 @@ public class AdminArticleController extends BaseController{
 		int aid = getParaToInt();
 		JPArticle article = BaseService.articleDao.findById(aid);
 		List<JPFile> files = fileService.getByAid(aid);
+		JPPanel panel = BaseService.panelDao.findById(article.getPid());
+		int ptype = panel.getPtype();
 		setAttr("article", article);
-		setAttr("files", files);
-		render("index.jsp");
+		if(files.size() == 0){
+			setAttr("files", null);
+		}else{
+			setAttr("files", files);
+		}
+		if(ptype == Constants.TYPE_LIST_ARTICLE || ptype == Constants.TYPE_TITLE_ROLL){
+			render("index-art.jsp");
+		}
+		if(ptype == Constants.TYPE_IMAGES){
+			render("index-image.jsp");
+		}
+		if(ptype == Constants.TYPE_LIST_LINK){
+			render("index-link.jsp");
+		}
 	}
 	
 	public void add(){
@@ -69,13 +83,35 @@ public class AdminArticleController extends BaseController{
 			String suffix = "."+file.getContentType().split("/")[1];
 			File oldFile = new File(uploadFile+"/" +file.getFileName());
 			File newFile = new File(uploadFile+"/"+DateUtil.randomName(6)+suffix);
-			
+			oldFile.renameTo(newFile);
 			JPArticle article = getModel(JPArticle.class,"");
 			article.setAvalue("static/artimage/"+newFile.getName());
 			articleService.add(article);
 			int aid = article.getAid();
-			
-			
+			redirect("/admin/article/"+article.getAid());
+		}
+	}
+	
+	public void updateImg(){
+		if (getRequest().getMethod().equals("POST")) {
+			List<UploadFile> files = getFiles("artimage");
+			JPArticle article = getModel(JPArticle.class,"");
+			JPArticle upArt = BaseService.articleDao.findById(article.getAid());
+			if(files.size() > 0){
+				UploadFile file = files.get(0);
+				String uploadFile = file.getUploadPath();
+				String suffix = "."+file.getContentType().split("/")[1];
+				File upFile = new File(PathKit.getWebRootPath()+"/"+upArt.getAvalue());
+				if(upFile.exists()){
+					upFile.delete();
+				}
+				File oldFile = new File(uploadFile+"/" +file.getFileName());
+				File newFile = new File(uploadFile+"/"+DateUtil.randomName(6)+suffix);
+				oldFile.renameTo(newFile);
+				article.setAvalue("static/artimage/"+newFile.getName());
+			}
+			article.update();
+			int aid = article.getAid();
 			redirect("/admin/article/"+article.getAid());
 		}
 	}
@@ -107,7 +143,7 @@ public class AdminArticleController extends BaseController{
 			for(UploadFile file : files){
 				fileService.add(aid, file.getFileName(), "/static/file/"+file.getFileName());
 			}
-			redirect("");
+			redirect("/admin/article/"+aid);
 		}
 	}
 	
