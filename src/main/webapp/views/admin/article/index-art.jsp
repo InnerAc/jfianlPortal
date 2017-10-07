@@ -17,7 +17,7 @@ td{
 <section class="content-header">
 		<h1 style="padding-left:0;" class="col-md-6">
 			文章查看
-			<small>${article.atitle }</small>
+			<small><c:out value="${article.atitle }" escapeXml="true"></c:out></small>
 	    </h1>
 	    <div style="float:right;"><a href="admin/article/edit?aid=${article.aid }" class="btn btn-warning">修改文章</a></div>
 		
@@ -25,7 +25,7 @@ td{
 <section class="content">
  	<div class="row" style="margin-left:5%;margin-right:5%;">
 	 	<div class="col-md-12" style="text-align:center;">
-	 		<h1>${article.atitle }</h1>
+	 		<h1><c:out value="${article.atitle }" escapeXml="true"></c:out></h1>
 	 		<h3><small class="times" >${article.atime }</small></h3>
 	 	</div>
 	 	<div class="col-md-12">
@@ -36,7 +36,7 @@ td{
 	 			<h3><small>附件列表</small></h3>
 	 		<ul>
 	 		  <c:forEach items="${files }" var="file">
-			    <li><a href="file/${file.fid }">${file.fname }</a></li>
+			    <li><a href="file/${file.fid }"><c:out value="${file.fname }" escapeXml="true"></c:out></a></li>
 			  </c:forEach>
 			 </c:if>
 			 </ul>
