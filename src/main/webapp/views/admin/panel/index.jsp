@@ -148,7 +148,7 @@ td{
 						<c:forEach items="${articles}" var="article"><tr>
 							<td width="70%"><a href="admin/article/${article.aid }">${article.atitle }</a></td>
 							<td>
-								<a href="admin/article/edit?aid=${article.aid }" class="btn btn-td btn-warning">编辑</a>
+								<a href="admin/article/${article.aid }" class="btn btn-td btn-warning">编辑</a>
 								<a onclick="deleteArt(${article.aid },this);" class="btn btn-td btn-danger">删除</a>
 							</td>
 						</tr></c:forEach>
@@ -174,7 +174,7 @@ td{
 						<c:forEach items="${articles}" var="article"><tr>
 							<td width="80%"><a href="admin/article/${article.aid }"><img style="height:100px;" class="img-responsive" src="${article.avalue }" alt="${article.atitle }" /></a></td>
 							<td>
-								<a href="admin/article/edit?aid=${article.aid }" class="btn btn-td btn-warning">编辑</a>
+								<a href="admin/article/${article.aid }" class="btn btn-td btn-warning">编辑</a>
 								<a onclick="deleteArt(${article.aid },this);" class="btn btn-td btn-danger">删除</a>
 							</td>
 						</tr></c:forEach>
@@ -209,8 +209,8 @@ td{
 	</div>
 </div>
 <div style="display:none">
-<div id="pid">${panel.pid }</div>
-<div id="ptype">${panel.ptype}</div>
+<div id="div_pid">${panel.pid }</div>
+<div id="div_ptype">${panel.ptype}</div>
 </div>
 <script src="static/myjs/admin-panel.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>

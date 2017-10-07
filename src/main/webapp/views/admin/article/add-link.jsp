@@ -47,8 +47,6 @@ td{
 </section>
 
 <div style="display:none">
-<div id="pid">${panel.pid }</div>
-<div id="ptype">${panel.ptype}</div>
 </div>
 <script src="static/myjs/admin-art.js"></script>
 <script src="static/js/jquery-ui.min.js"></script>

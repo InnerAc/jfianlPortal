@@ -23,17 +23,12 @@ td{
 </section>
 <section class="content">
  	<div class="col-md-6">
- 	<form id="iform" action="admin/article/updateImg" method=POST enctype="multipart/form-data">	
+ 	<form id="iform" action="admin/article/update" method=POST enctype="multipart/form-data">	
  		<input type="hidden" name="pid" value="${article.pid }" >
 		<input type="hidden" name="aid" value="${article.aid }" >
 	 	<div class="form-group">
 			<label class="control-label">图片描述：</label>
 			<input type="text" name="atitle" class="form-control" value="${article.atitle }" />
-		</div>
-		
-		<div class="form-group">
-			<label class="control-label">修改图片：</label>
-			<input class="form-control" type="file" name="file"/>
 		</div>
 		
 		<div class="form-group">
@@ -48,7 +43,6 @@ td{
  	</form>
  	</div>
  	<div class="col-md-6">
- 		<img class="img-responsive" src="${article.avalue }" alt="${article.atitle }" />
  	</div>
 </section>
 <div style="display:none">

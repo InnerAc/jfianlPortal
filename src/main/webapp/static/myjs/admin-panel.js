@@ -16,12 +16,12 @@ function updateValue(){
 	});
 }
 function updateTextArea(){
-	if($('#ptype').html() == '1'){
+	if($('#div_ptype').html() == '1'){
 		value = editor.txt.html()
 	}else{
 		value = $('#textarea0').val();
 	}
-	pid = $('#pid').html();
+	pid = $('#div_pid').html();
 	$.ajax({
 		type: "POST",
 		url: 'admin/panel/updateValue',
