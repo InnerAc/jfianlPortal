@@ -8,3 +8,10 @@ function genTimes(){
 function timstamp2date(unixtime){
 	return new Date(unixtime).toLocaleDateString().replace('/','-').replace('/','-');
 }
+function getPanelHeight(){
+	width = window.innerWidth;
+	return genPanelHeight(width);
+}
+function genPanelHeight(width){
+	return parseInt(width/48*9);
+}

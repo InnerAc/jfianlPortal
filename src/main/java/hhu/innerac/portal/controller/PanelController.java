@@ -11,4 +11,7 @@ public class PanelController extends BaseController{
 		renderJson(res);
 	}
 	
+	public void list(){
+		renderText(getPara());
+	}
 }

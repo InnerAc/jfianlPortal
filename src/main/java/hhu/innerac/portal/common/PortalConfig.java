@@ -61,7 +61,7 @@ public class PortalConfig extends JFinalConfig{
 
 	@Override
 	public void configRoute(Routes arg0) {
-		arg0.add("/", IndexController.class);
+		arg0.add("/", IndexController.class,"views/front");
 		arg0.add("panel",PanelController.class);
 		arg0.add("admin",AdminController.class,"views/admin");
 		arg0.add("admin/panel",AdminPanelController.class,"views/admin/panel");

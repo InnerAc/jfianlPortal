@@ -2,7 +2,7 @@ package hhu.innerac.portal.controller;
 
 public class IndexController extends BaseController{
 	public void index(){
-		renderText("success");
+		render("index.jsp");
 	}
 	
 	public void file(){
