@@ -23,7 +23,7 @@
  		<div class="col-md-3">
 			<div class="box box-info box-solid">
 				<div class="box-header with-border">
-					<h3 class="box-title">${panel.pname }</h3>
+					<h3 class="box-title"><c:out value="${panel.pname }" escapeXml="true"></c:out></h3>
 					<c:if test="${panel.ptype == 0 || panel.ptype == 2 || panel.ptype == 3 || panel.ptype == 4 }">
 					<div class="box-tools pull-right">
 						<a href="admin/article/add/${panel.pid }" class="btn btn-box-tool"><i class="fa fa-plus"></i></a>
