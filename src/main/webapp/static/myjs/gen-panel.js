@@ -13,6 +13,12 @@ function genPanels(data){
 	$('.carousel').carousel({
 	    interval: 2000
 	})
+	$('.scroll-text').scrollbox({
+		linear: true,
+		step: 1,
+		delay: 0,
+		speed: 50
+	});
 }
 /**
  * 渲染非tab页面
@@ -34,7 +40,7 @@ function gen_untab(data){
 			+panel.pid
 			+'" class="btn btn-panel-tip btn-sm">更多>></a> </div> </div> </div> <div class="box-body" >';
 	}else{
-		str += ' box-no"><div class="box-body no-padding">';
+		str += ' box-no"><div class="box-body no-padding" style="height:100%;">';
 	}
 	switch(panel.ptype){
 		case TYPE_LIST_ARTICLE:{
@@ -47,6 +53,10 @@ function gen_untab(data){
 		}
 		case TYPE_IMAGES:{
 			str += image_info(data);
+			break;
+		}
+		case TYPE_TITLE_ROLL:{
+			str += roll_info(data);
 			break;
 		}
 	}
@@ -165,5 +175,17 @@ function image_info(data){
 		+'<a class="carousel-control right" href="#carousel_'
 		+panel.pid
 		+'" data-slide="next">&rsaquo;</a>'
+	return str;
+}
+function roll_info(data){
+	articles = data.articles;
+	str = '<div class="scroll-text"><ul>';
+	for(var i=0;i<articles.length;i++){
+		str += '<li style="font-size:20px;"><a href="article/'
+			+articles[i].aid+'">'
+			+articles[i].atitle
+			+'</a></li>';
+	}
+	str += '</ul></div>'
 	return str;
 }

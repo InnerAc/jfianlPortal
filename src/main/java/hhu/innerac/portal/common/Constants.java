@@ -42,5 +42,5 @@ public class Constants {
 	/**
 	 * 展示框最多展示条目
 	 */
-	public static int SHOW_NUMBER = 6;
+	public static int SHOW_NUMBER = 10;
 }

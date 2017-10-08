@@ -1801,6 +1801,7 @@ a:focus {
   padding: 10px;
   overflow: hidden;
   background-color:#fff;
+  height:85%;
 }
 .no-header .box-body {
   border-top-right-radius: 3px;
