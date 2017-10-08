@@ -68,7 +68,7 @@ function gen_untab(data){
 			break;
 		}
 		case TYPE_SELF:{//自由定制类
-//			str += roll_info(data);
+			str += self_info(data);
 			break;
 		}
 	}
@@ -231,4 +231,11 @@ function iframe_info(data){
 		+data.panel.pvalue
 		+'"></iframe>';
 	return str;
+}
+/**
+ * 自由定制
+ * @param data
+ */
+function self_info(data){
+	return data.panel.pvalue;
 }
