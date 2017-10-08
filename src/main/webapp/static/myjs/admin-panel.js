@@ -1,6 +1,6 @@
 function updateValue(){
 	value = $('#tarUrl').val();
-	pid = $('#pid').html();
+	pid = $('#div_pid').html();
 	$.ajax({
 		type: "POST",
 		url: 'admin/panel/updateValue',

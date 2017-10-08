@@ -20,6 +20,8 @@
   <style type="text/css">
     .col-box{
       padding: 5px;
+      overflow:hidden;
+/*      overflow-y:auto;*/
     }
     table{
       table-layout: fixed;
@@ -28,6 +30,10 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+    .nav>li>a{
+    	padding-bottom:8px;
+    	padding-top:8px;
     }
   </style>
   

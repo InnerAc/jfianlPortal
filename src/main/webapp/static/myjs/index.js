@@ -1,7 +1,7 @@
 function init(){
 	$.ajax({
 		type: "POST",
-		url: 'panel/4',
+		url: 'panel/all',
 		dataType: "json",
 		success:function(data){
 			genPanels(data);
