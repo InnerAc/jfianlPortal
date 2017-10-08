@@ -10,6 +10,9 @@ function genPanels(data){
 		}
 	}
 	genTimes();
+	$('.carousel').carousel({
+	    interval: 2000
+	})
 }
 /**
  * 渲染非tab页面
@@ -31,7 +34,7 @@ function gen_untab(data){
 			+panel.pid
 			+'" class="btn btn-panel-tip btn-sm">更多>></a> </div> </div> </div> <div class="box-body" >';
 	}else{
-		str += ' box-no"><div class="box-body">';
+		str += ' box-no"><div class="box-body no-padding">';
 	}
 	switch(panel.ptype){
 		case TYPE_LIST_ARTICLE:{
@@ -42,10 +45,19 @@ function gen_untab(data){
 			str += show_notice_info(data);
 			break;
 		}
+		case TYPE_IMAGES:{
+			str += image_info(data);
+			break;
+		}
 	}
 	str += '</div></div></div>'
 	return str;
 }
+/**
+ * 渲染tab页
+ * @param data
+ * @returns {String}
+ */
 function gen_tab(data){
 	panel = data.panel;
 	subPanels = data.subPanels;
@@ -84,6 +96,10 @@ function gen_tab(data){
 				str += show_notice_info(subPanels[i]);
 				break;
 			}
+			case TYPE_IMAGES:{
+				str += image_info(subPanels[i]);
+				break;
+			}
 		}
 		str += '</div>';
 	}
@@ -113,4 +129,41 @@ function list_art_info(data){
  */
 function show_notice_info(data){
 	return data.panel.pvalue;
+}
+/**
+ * 渲染图片轮播类
+ * @param data
+ */
+function image_info(data){
+	panel = data.panel;
+	articles = data.articles;
+	str = '<div id="carousel_'
+		+panel.pid
+		+'" class="carousel slide" data-interval="2000"><div class="carousel-inner">';
+	for(var i=0;i<articles.length;i++){
+		if(i == 0){
+			str += '<div class="item active"><a href="'
+				+articles[i].aurl
+				+'"><img src="'
+				+articles[i].avalue
+				+'" alt="'
+				+articles[i].atitle
+				+'"></a></div>';
+		}else{
+			str += '<div class="item"><a href="'
+				+articles[i].aurl
+				+'"><img src="'
+				+articles[i].avalue
+				+'" alt="'
+				+articles[i].atitle
+				+'"></a></div>';
+		}
+	}
+	str += '<a class="carousel-control left" href="#carousel_'
+		+panel.pid
+		+'" data-slide="prev">&lsaquo;</a>'
+		+'<a class="carousel-control right" href="#carousel_'
+		+panel.pid
+		+'" data-slide="next">&rsaquo;</a>'
+	return str;
 }
