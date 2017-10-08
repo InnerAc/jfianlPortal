@@ -43,20 +43,32 @@ function gen_untab(data){
 		str += ' box-no"><div class="box-body no-padding" style="height:100%;">';
 	}
 	switch(panel.ptype){
-		case TYPE_LIST_ARTICLE:{
+		case TYPE_LIST_ARTICLE:{//列表文章类
 			str += list_art_info(data);
 			break;
 		}
-		case TYPE_SHOW_NOTICE:{
+		case TYPE_SHOW_NOTICE:{//公告展示类
 			str += show_notice_info(data);
 			break;
 		}
-		case TYPE_IMAGES:{
+		case TYPE_IMAGES:{//图片轮播类
 			str += image_info(data);
 			break;
 		}
-		case TYPE_TITLE_ROLL:{
+		case TYPE_TITLE_ROLL:{//文章标题滚动展示类
 			str += roll_info(data);
+			break;
+		}
+		case TYPE_LIST_LINK:{//列表链接类
+			str += list_link_info(data);
+			break;
+		}
+		case TYPE_IFRAME:{//iframe内嵌类
+			str += iframe_info(data);
+			break;
+		}
+		case TYPE_SELF:{//自由定制类
+//			str += roll_info(data);
 			break;
 		}
 	}
@@ -177,6 +189,11 @@ function image_info(data){
 		+'" data-slide="next">&rsaquo;</a>'
 	return str;
 }
+/**
+ * 标题滚动
+ * @param data
+ * @returns {String}
+ */
 function roll_info(data){
 	articles = data.articles;
 	str = '<div class="scroll-text"><ul>';
@@ -187,5 +204,31 @@ function roll_info(data){
 			+'</a></li>';
 	}
 	str += '</ul></div>'
+	return str;
+}
+/**
+ * 列表链接
+ * @param data
+ */
+function list_link_info(data){
+	articles = data.articles;
+	str = '<ul>';
+	for(var i=0;i<articles.length;i++){
+		str += '<li style="font-size:20px;"><a href="article/'
+			+articles[i].aid+'">'
+			+articles[i].atitle
+			+'</a></li>';
+	}
+	str += '</ul>'
+	return str;
+}
+/**
+ * iframe展示
+ * @param data
+ */
+function iframe_info(data){
+	str = '<iframe width="100%" height="100%" frameBorder=0 scrolling=no src="'
+		+data.panel.pvalue
+		+'"></iframe>';
 	return str;
 }
