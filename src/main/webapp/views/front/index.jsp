@@ -4,7 +4,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <div class="content-wrapper">
 <section class="content">
-<div id="panels_area" class="row">
+<div id="panels_area" class="row div-image">
 </div>
 </section>
 </div>

@@ -1,6 +1,9 @@
 package hhu.innerac.portal.service;
 
+import java.io.File;
 import java.util.List;
+
+import com.jfinal.kit.PathKit;
 
 import hhu.innerac.portal.entry.JPFile;
 
@@ -20,6 +23,11 @@ public class FileService extends BaseService{
 
 	public boolean remove(int fid) {
 		JPFile file = fileDao.findById(fid);
+		String filePath = file.getFpath();
+		File tarfile = new File(PathKit.getWebRootPath()+"/"+filePath);
+		if(tarfile.exists()){
+			tarfile.delete();
+		}
 		return file.delete();
 	}
 

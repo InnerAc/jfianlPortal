@@ -4953,3 +4953,12 @@ table.text-center th {
   height: 100%;
   overflow: hidden;
 }
+.main-div{
+	margin:0 5%;
+}
+.div-image{
+	background-image:url("../image/main-bg.png");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

@@ -36,9 +36,13 @@ function gen_untab(data){
 	if(panel.pshow == 1){
 		str += 'box-success"> <div class="box-header with-border"> <h3 class="box-title">'
 			+panel.pname
-			+'</h3> <div class="box-tools pull-right"> <div class="btn-group"> <a href="panel/list/'
-			+panel.pid
-			+'" class="btn btn-panel-tip btn-sm">更多>></a> </div> </div> </div> <div class="box-body" >';
+			+'</h3>';
+		if(panel.ptype == TYPE_LIST_ARTICLE ||panel.ptype == TYPE_SHOW_NOTICE||panel.ptype == TYPE_TITLE_ROLL ){
+			str += '<div class="box-tools pull-right"> <div class="btn-group"> <a href="panel/list/'
+				+panel.pid
+				+'" class="btn btn-panel-tip btn-sm">更多>></a> </div> </div>';
+		}
+		str += ' </div> <div class="box-body" >';
 	}else{
 		str += ' box-no"><div class="box-body no-padding" style="height:100%;">';
 	}

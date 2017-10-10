@@ -8,6 +8,9 @@ public class JPFile extends Model<JPFile>{
 	public String getFname(){
 		return getStr("fname");
 	}
+	public String getFpath(){
+		return getStr("fpath");
+	}
 	public int getFid(){
 		return getInt("fid");
 	}

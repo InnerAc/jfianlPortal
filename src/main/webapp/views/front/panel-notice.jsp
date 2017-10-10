@@ -30,27 +30,7 @@
 		</c:forEach>
 	</div>
 	<div class="col-md-9">
-	<div class="box box-info">
-		<div class="box-header">
-			<h3 class="box-title">文章列表</h3>
-		</div>
-		<div class="box-body">
-		<table class="table table-condensed table-hover">
-			<tr>
-				<th width="80%">文章标题</th>
-				<th>发布时间</th>
-			</tr>
-			<tbody>
-				<c:forEach items="${articles }" var="article">
-					<tr>
-					<td width="80%"><a href="article/${article.aid }">${article.atitle }</a></td>
-					<td class="times">${article.atime }</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		</div>
-	</div>
+		${panel.pvalue }
 	</div>
 </div>
 </section>
