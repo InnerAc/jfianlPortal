@@ -102,6 +102,7 @@ function gen_tab(data){
 				+'</a></li>'; 
 		}
 	}
+	str += '<li style="float:right;"><a onclick="tab_more(this);" style="color:#3c8dbc;" class="btn btn-panel-tip btn-sm">更多>></a></li>'
 	str += '</ul><div class="tab-content box-body">';
 	for(var i=0;i<subPanels.length;i++){
 		if(0==i){
