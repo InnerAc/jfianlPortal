@@ -30,11 +30,11 @@
 		</c:forEach>
 	</div>
 	<div class="col-md-9">
-	<div class="box box-info">
+	<div class="box box-info front-back">
 		<div class="box-header">
 			<h3 class="box-title">文章列表</h3>
 		</div>
-		<div class="box-body">
+		<div class="box-body front-back">
 		<table class="table table-condensed table-hover">
 			<tr>
 				<th width="80%">文章标题</th>

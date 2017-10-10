@@ -34,7 +34,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-9 front-back">
 		<div class="col-md-12" style="text-align:center;">
 	 		<h1><c:out value="${article.atitle }" escapeXml="true"></c:out></h1>
 	 		<h3><small class="times" >${article.atime }</small></h3>

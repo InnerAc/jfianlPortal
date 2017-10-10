@@ -29,7 +29,7 @@
 			</div>
 		</c:forEach>
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-9 front-back">
 		${panel.pvalue }
 	</div>
 </div>
